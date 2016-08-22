@@ -123,6 +123,15 @@
         }
       }
     },
+    "namespace": {
+      "type": "string"
+    },
+    "base_url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
     "models": {
       "type": "object",
       "patternProperties": {
