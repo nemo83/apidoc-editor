@@ -75,6 +75,49 @@
           "type": "string"
         }
       }
+    },
+    "enum": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "plural": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "deprecation": {
+                "$ref": "#/definitions/deprecation"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "deprecation": {
+          "$ref": "#/definitions/deprecation"
+        }
+      },
+      "required": [
+        "name",
+        "values"
+      ]
     }
   },
   "type": "object",
@@ -173,6 +216,14 @@
           "type",
           "required"
         ]
+      }
+    },
+    "enums": {
+      "type": "object",
+      "patternProperties": {
+        "[A-Za-z]": {
+          "$ref": "#/definitions/enum"
+        }
       }
     },
     "models": {
