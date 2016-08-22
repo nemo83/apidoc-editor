@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "model": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "plural": {
+          "type": "string"
+        },
+        "fileds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "type"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "description"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "models": {
+      "type": "object",
+      "patternProperties": {
+        "[A-Za-z]": {
+          "$ref": "#/definitions/model"
+        }
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
