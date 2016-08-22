@@ -143,6 +143,38 @@
         }
       }
     },
+    "headers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "default": true
+          },
+          "default": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "deprecation": {
+            "$ref": "#/definitions/deprecation"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "required"
+        ]
+      }
+    },
     "models": {
       "type": "object",
       "patternProperties": {
