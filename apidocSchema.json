@@ -132,6 +132,17 @@
     "description": {
       "type": "string"
     },
+    "imports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "models": {
       "type": "object",
       "patternProperties": {
