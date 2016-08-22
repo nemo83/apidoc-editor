@@ -10,7 +10,7 @@
         "plural": {
           "type": "string"
         },
-        "fileds": {
+        "fields": {
           "type": "array",
           "items": {
             "type": "object",
@@ -19,12 +19,45 @@
                 "type": "string"
               },
               "type": {
+                "type": "string",
+                "enum": [
+                  "boolean",
+                  "date-iso8601",
+                  "date-time-iso8601",
+                  "decimal",
+                  "double",
+                  "integer",
+                  "long",
+                  "object",
+                  "string",
+                  "unit",
+                  "uuid"
+                ]
+              },
+              "description": {
                 "type": "string"
+              },
+              "required": {
+                "type": "boolean",
+                "default": true
+              },
+              "default": {
+                "type": "string"
+              },
+              "minimum": {
+                "type": "integer"
+              },
+              "maximum": {
+                "type": "integer"
+              },
+              "deprecation": {
+                "$ref": "#/definitions/deprecation"
               }
             },
             "required": [
               "name",
-              "type"
+              "type",
+              "required"
             ]
           },
           "minItems": 1,
@@ -34,6 +67,14 @@
       "required": [
         "description"
       ]
+    },
+    "deprecation": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        }
+      }
     }
   },
   "type": "object",
