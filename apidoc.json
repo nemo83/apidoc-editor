@@ -38,7 +38,12 @@
                 "type": "string"
               },
               "required": {
-                "type": "boolean"
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ],
+                "default": "true"
               },
               "default": {
                 "type": "string"
@@ -240,7 +245,12 @@
                       "$ref": "#/definitions/deprecation"
                     },
                     "required": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "enum": [
+                        "true",
+                        "false"
+                      ],
+                      "default": "true"
                     },
                     "default": {
                       "type": "string"
@@ -365,7 +375,12 @@
             "type": "string"
           },
           "required": {
-            "type": "boolean"
+            "type": "boolean",
+            "enum": [
+              "true",
+              "false"
+            ],
+            "default": "true"
           },
           "default": {
             "type": "string"
