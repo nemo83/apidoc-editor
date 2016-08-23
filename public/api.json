@@ -1,0 +1,497 @@
+{
+  "apidoc": {
+    "version": "0.11.26"
+  },
+  "name": "football-data",
+  "base_url": "http://api.football-data.org/v1",
+  "description": "",
+  "models": {
+    "competition": {
+      "fields": [
+        {
+          "name": "id",
+          "type": "long",
+          "description": "ID of the competition"
+        },
+        {
+          "name": "caption",
+          "type": "string",
+          "description": "Competition long name"
+        },
+        {
+          "name": "league",
+          "type": "league",
+          "description": "The league the competition belongs to"
+        },
+        {
+          "name": "year",
+          "type": "string",
+          "description": "year of the competition"
+        },
+        {
+          "name": "currentMatchday",
+          "type": "integer",
+          "description": "current day of the competition"
+        },
+        {
+          "name": "numberOfTeams",
+          "type": "integer",
+          "description": "Number of teams in the competition"
+        },
+        {
+          "name": "numberOfGames",
+          "type": "integer",
+          "description": "Number of matches in the competition"
+        },
+        {
+          "name": "lastUpdated",
+          "type": "date-time-iso8601",
+          "description": "Timestamp of the last update"
+        }
+      ]
+    },
+    "fixture": {
+      "fields": [
+        {
+          "name": "date",
+          "type": "date-time-iso8601",
+          "description": "Event date and time"
+        },
+        {
+          "name": "status",
+          "type": "fixtureStatus",
+          "description": "Status of the Event"
+        },
+        {
+          "name": "matchday",
+          "type": "integer",
+          "description": "day of the fixture in the competition"
+        },
+        {
+          "name": "homeTeamName",
+          "type": "string"
+        },
+        {
+          "name": "awayTeamName",
+          "type": "string"
+        },
+        {
+          "name": "result",
+          "type": "result"
+        }
+      ]
+    },
+    "fixtures": {
+      "fields": [
+        {
+          "name": "fixtures",
+          "type": "[fixture]"
+        }
+      ]
+    },
+    "score": {
+      "fields": [
+        {
+          "name": "goalsHomeTeam",
+          "type": "integer"
+        },
+        {
+          "name": "goalsAwayTeam",
+          "type": "integer"
+        }
+      ]
+    },
+    "result": {
+      "fields": [
+        {
+          "name": "goalsHomeTeam",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "goalsAwayTeam",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "halfTime",
+          "type": "score",
+          "required": false
+        },
+        {
+          "name": "extraTime",
+          "type": "score",
+          "required": false
+        },
+        {
+          "name": "penaltyShootout",
+          "type": "score",
+          "required": false
+        }
+      ]
+    },
+    "team": {
+      "fields": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "shortName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "squadMarketValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "crestUrl",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    "teams": {
+      "fields": [
+        {
+          "name": "teams",
+          "type": "[team]"
+        }
+      ]
+    },
+    "player": {
+      "fields": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        },
+        {
+          "name": "jerseyNumber",
+          "type": "integer"
+        },
+        {
+          "name": "dateOfBirth",
+          "type": "date-iso8601"
+        },
+        {
+          "name": "nationality",
+          "type": "string"
+        },
+        {
+          "name": "contractUntil",
+          "type": "date-iso8601"
+        },
+        {
+          "name": "marketValue",
+          "type": "string"
+        }
+      ]
+    },
+    "leaguePosition": {
+      "fields": [
+        {
+          "name": "rank",
+          "type": "integer"
+        },
+        {
+          "name": "team",
+          "type": "string"
+        },
+        {
+          "name": "teamId",
+          "type": "long"
+        },
+        {
+          "name": "playedGames",
+          "type": "integer"
+        },
+        {
+          "name": "crestURI",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "points",
+          "type": "integer"
+        },
+        {
+          "name": "goals",
+          "type": "integer"
+        },
+        {
+          "name": "goalsAgainst",
+          "type": "integer"
+        },
+        {
+          "name": "goalDifference",
+          "type": "integer"
+        }
+      ]
+    },
+    "leagueTable": {
+      "fields": [
+        {
+          "name": "leagueCaption",
+          "type": "string"
+        },
+        {
+          "name": "matchDay",
+          "type": "integer"
+        },
+        {
+          "name": "standing",
+          "type": "[leaguePosition]"
+        }
+      ]
+    }
+  },
+  "enums": {
+    "league": {
+      "name": "league",
+      "description": "Supported leagues",
+      "values": [
+        {
+          "name": "BL1",
+          "description": "1. Bundesliga"
+        },
+        {
+          "name": "BL2",
+          "description": "2. Bundesliga"
+        },
+        {
+          "name": "BL3",
+          "description": "3. Bundesliga"
+        },
+        {
+          "name": "DFB",
+          "description": "Dfb-Cup"
+        },
+        {
+          "name": "PL",
+          "description": "Premiere League"
+        },
+        {
+          "name": "EL1",
+          "description": "League One"
+        },
+        {
+          "name": "ELC",
+          "description": "Championship"
+        },
+        {
+          "name": "FAC",
+          "description": "FA-Cup"
+        },
+        {
+          "name": "SA",
+          "description": "Serie A"
+        },
+        {
+          "name": "SB",
+          "description": "Serie B"
+        },
+        {
+          "name": "PD",
+          "description": "Primera Division"
+        },
+        {
+          "name": "SD",
+          "description": "Segunda Division"
+        },
+        {
+          "name": "CDR",
+          "description": "Copa del Rey"
+        },
+        {
+          "name": "FL1",
+          "description": "Ligue 1"
+        },
+        {
+          "name": "FL2",
+          "description": "Ligue 2"
+        },
+        {
+          "name": "DED",
+          "description": "Eredivisie"
+        },
+        {
+          "name": "PPL",
+          "description": "Primeira Liga"
+        },
+        {
+          "name": "GSL",
+          "description": "Super League"
+        },
+        {
+          "name": "CL",
+          "description": "Champions-League"
+        },
+        {
+          "name": "EL",
+          "description": "UEFA-Cup"
+        },
+        {
+          "name": "EC",
+          "description": "European-Cup of Nations"
+        },
+        {
+          "name": "WC",
+          "description": "World-Cup"
+        }
+      ]
+    },
+    "fixtureStatus": {
+      "name": "fixtureStatus",
+      "description": "status of the fixture",
+      "values": [
+        {
+          "name": "SCHEDULED"
+        },
+        {
+          "name": "TIMED"
+        },
+        {
+          "name": "POSTPONED"
+        },
+        {
+          "name": "CANCELED"
+        },
+        {
+          "name": "IN_PLAY"
+        },
+        {
+          "name": "FINISHED"
+        }
+      ]
+    }
+  },
+  "resources": {
+    "competition": {
+      "path": "/competitions",
+      "operations": [
+        {
+          "method": "GET",
+          "responses": {
+            "200": {
+              "type": "[competition]"
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/:competition_id/teams",
+          "parameters": [
+            {
+              "name": "competition_id",
+              "type": "long",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "type": "teams"
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/:competition_id/fixtures",
+          "parameters": [
+            {
+              "name": "competition_id",
+              "type": "long",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "type": "fixtures"
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/:competition_id/leagueTable",
+          "parameters": [
+            {
+              "name": "competition_id",
+              "type": "long",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "type": "leagueTable"
+            }
+          }
+        }
+      ]
+    },
+    "team": {
+      "path": "/teams",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/:team_id",
+          "parameters": [
+            {
+              "name": "team_id",
+              "type": "long",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "type": "team"
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/:team_id/fixtures",
+          "parameters": [
+            {
+              "name": "team_id",
+              "type": "long",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "type": "[fixtures]"
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/:team_id/players",
+          "parameters": [
+            {
+              "name": "team_id",
+              "type": "long",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "type": "[player]"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "unions": {
+  }
+}
