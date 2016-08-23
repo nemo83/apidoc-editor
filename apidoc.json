@@ -38,8 +38,7 @@
                 "type": "string"
               },
               "required": {
-                "type": "boolean",
-                "default": true
+                "type": "boolean"
               },
               "default": {
                 "type": "string"
@@ -241,8 +240,7 @@
                       "$ref": "#/definitions/deprecation"
                     },
                     "required": {
-                      "type": "boolean",
-                      "default": true
+                      "type": "boolean"
                     },
                     "default": {
                       "type": "string"
@@ -367,8 +365,7 @@
             "type": "string"
           },
           "required": {
-            "type": "boolean",
-            "default": true
+            "type": "boolean"
           },
           "default": {
             "type": "string"
