@@ -48,6 +48,9 @@
               "default": {
                 "type": "string"
               },
+              "example": {
+                "type": "string"
+              },
               "minimum": {
                 "type": "integer"
               },
