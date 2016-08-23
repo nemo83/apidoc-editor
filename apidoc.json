@@ -245,7 +245,7 @@
                       "$ref": "#/definitions/deprecation"
                     },
                     "required": {
-                      "type": "boolean",
+                      "type": "string",
                       "enum": [
                         "true",
                         "false"
@@ -375,7 +375,7 @@
             "type": "string"
           },
           "required": {
-            "type": "boolean",
+            "type": "string",
             "enum": [
               "true",
               "false"
