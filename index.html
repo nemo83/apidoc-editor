@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"/>
-  <title>CSS Integration JSON Editor Example</title>
+    <meta charset="utf-8"/>
+    <title>CSS Integration JSON Editor Example</title>
 
-  <!-- Foundation CSS framework (Bootstrap and jQueryUI also supported) -->
-  <link rel='stylesheet' href='//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css'>
-  <!-- Font Awesome icons (Bootstrap, Foundation, and jQueryUI also supported) -->
-  <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+    <!-- Foundation CSS framework (Bootstrap and jQueryUI also supported) -->
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css'>
+    <!-- Font Awesome icons (Bootstrap, Foundation, and jQueryUI also supported) -->
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
 
-  <script src="jsoneditor.min.js"></script>
+    <script src="jsoneditor.min.js"></script>
 
-  <script>
+    <script>
     // Set the default CSS theme and icon library globally
     JSONEditor.defaults.theme = 'foundation5';
     JSONEditor.defaults.iconlib = 'fontawesome4';
+
 
 
     </script>
 </head>
 <body>
 <div class='row'>
-  <div class='medium-12-columns'>
+    <div class='medium-12-columns'>
 
-    <p>
-      To begin
+        <p>
+            To begin
+        </p>
+        <ul>
+            <li>Start using the editor</li>
+            <li>Open a pre-existing apidoc json document via the "chose file" above</li>
+            <li>Paste a pre-exusting apidoc json in the text area ad the bottom and pres the "Update Form" button</li>
+        </ul>
+
+        <input type="file" id="apidocFile"/>
+
+        <button id='copy' class='tiny'>Copy to clipboard</button>
+
+        <button id='clear' class='secondary tiny'>Clear</button>
+
+        <span id='valid_indicator' class='label'></span>
+    </div>
+</div>
+<div class='row'>
+    <div id='editor_holder' class='medium-12 columns'>
+    </div>
+</div>
+<div class='row'>
+    <h2>JSON Output</h2>
+    <p>You can also make changes to the JSON here and set the value in the editor by clicking
+        <button class='btn btn-primary' id='setvalue'>Update Form</button>
     </p>
-    <ul>
-      <li>Start using the editor</li>
-      <li>Open a pre-existing apidoc json document via the "chose file" above</li>
-      <li>Paste a pre-exusting apidoc json in the text area ad the bottom and pres the "Update Form" button</li>
-    </ul>
-
-    <input type="file" id="apidocFile"/>
-
-    <button id='copy' class='tiny'>Copy to clipboard</button>
-
-    <button id='clear' class='secondary tiny'>Clear</button>
-
-    <span id='valid_indicator' class='label'></span>
-  </div>
-</div>
-<div class='row'>
-  <div id='editor_holder' class='medium-12 columns'>
-  </div>
-</div>
-<div class='row'>
-  <h2>JSON Output</h2>
-  <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
-  <div id='apidoc_preview' class='medium-12 columns'>
+    <div id='apidoc_preview' class='medium-12 columns'>
         <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;'
                   class='form-control'></textarea>
-  </div>
+    </div>
 </div>
 
 <script>
 
-    var apidoc_schema = {"$schema":"http://json-schema.org/draft-04/schema#","definitions":{"model":{"type":"object","properties":{"description":{"type":"string"},"plural":{"type":"string"},"fields":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"type":{"type":"string","enum":["boolean","date-iso8601","date-time-iso8601","decimal","double","integer","long","object","string","unit","uuid"]},"description":{"type":"string"},"required":{"type":"string","enum":["true","false"],"default":"true"},"default":{"type":"string"},"minimum":{"type":"integer"},"maximum":{"type":"integer"},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name","type","required"]},"minItems":1,"uniqueItems":true}}},"deprecation":{"type":"object","properties":{"description":{"type":"string"}}},"enum":{"type":"object","properties":{"name":{"type":"string"},"plural":{"type":"string"},"description":{"type":"string"},"values":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name"]},"minItems":1,"uniqueItems":true},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name","values"]},"union":{"type":"object","properties":{"name":{"type":"string"},"plural":{"type":"string"},"discriminator":{"type":"string"},"description":{"type":"string"},"types":{"type":"array","items":{"type":"object","properties":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/deprecation"},"required":["type"]},"minItems":2,"uniqueItems":true}},"required":["name","types"]},"response":{"type":"object","properties":{"type":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["type"]},"resource":{"type":"object","properties":{"path":{"type":"string"},"description":{"type":"string"},"operations":{"type":"array","items":{"type":"object","properties":{"method":{"type":"string","enum":["GET","POST","PUT","DELETE"]},"path":{"type":"string"},"description":{"type":"string"},"body":{"type":"object","properties":{"type":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/resourceItem"}},"required":["type"]},"parameters":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"type":{"type":"string"},"location":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/deprecation"},"required":{"type":"string","enum":["true","false"],"default":"true"},"default":{"type":"string"},"example":{"type":"string"},"minimum":{"type":"integer"},"maximum":{"type":"integer"}}},"required":["name","type","required"],"minItems":1},"responses":{"type":"object","patternProperties":{"[0-9]{3}":{"$ref":"#/definitions/response"}}}},"required":["method"],"minItems":1}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["operations"]}},"type":"object","properties":{"name":{"type":"string"},"apidoc":{"type":"object","properties":{"version":{"type":"string"}}},"info":{"type":"object","properties":{"contact":{"type":"object","properties":{"name":{"type":"string"},"url":{"type":"string"},"email":{"type":"string"}}},"license":{"type":"object","properties":{"name":{"type":"string"},"url":{"type":"string"},"required":["name"]}}}},"namespace":{"type":"string"},"base_url":{"type":"string"},"description":{"type":"string"},"imports":{"type":"array","items":{"type":"object","properties":{"uri":{"type":"string"}}}},"headers":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"type":{"type":"string"},"required":{"type":"string","enum":["true","false"],"default":"true"},"default":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name","type","required"]}},"enums":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/enum"}}},"models":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/model"}}},"unions":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/union"}}},"resources":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/resource"}}}},"required":["name"]};
+    var apidoc_schema = {"$schema":"http://json-schema.org/draft-04/schema#","definitions":{"model":{"type":"object","properties":{"description":{"type":"string"},"plural":{"type":"string"},"fields":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"type":{"type":"string","enum":["boolean","date-iso8601","date-time-iso8601","decimal","double","integer","long","object","string","unit","uuid"]},"description":{"type":"string"},"required":{"type":"string","enum":["true","false"],"default":"true"},"default":{"type":"string"},"minimum":{"type":"integer"},"maximum":{"type":"integer"},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name","type","required"]},"minItems":1,"uniqueItems":true},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}}},"deprecation":{"type":"object","properties":{"description":{"type":"string"}}},"enum":{"type":"object","properties":{"name":{"type":"string"},"plural":{"type":"string"},"description":{"type":"string"},"values":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name"]},"minItems":1,"uniqueItems":true},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name","values"]},"union":{"type":"object","properties":{"name":{"type":"string"},"plural":{"type":"string"},"discriminator":{"type":"string"},"description":{"type":"string"},"types":{"type":"array","items":{"type":"object","properties":{"type":{"type":"string"},"description":{"type":"string"},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["type"]},"minItems":2,"uniqueItems":true},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name","types"]},"response":{"type":"object","properties":{"type":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["type"]},"resource":{"type":"object","properties":{"path":{"type":"string"},"description":{"type":"string"},"operations":{"type":"array","items":{"type":"object","properties":{"method":{"type":"string","enum":["GET","POST","PUT","DELETE"]},"path":{"type":"string"},"description":{"type":"string"},"body":{"type":"object","properties":{"type":{"type":"string"},"description":{"type":"string"},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/resourceItem"}},"required":["type"]},"parameters":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"type":{"type":"string"},"location":{"type":"string"},"description":{"type":"string"},"deprecation":{"$ref":"#/definitions/deprecation"},"required":{"type":"string","enum":["true","false"],"default":"true"},"default":{"type":"string"},"example":{"type":"string"},"minimum":{"type":"integer"},"maximum":{"type":"integer"}}},"required":["name","type","required"],"minItems":1},"responses":{"type":"object","patternProperties":{"[0-9]{3}":{"$ref":"#/definitions/response"}}},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["method"],"minItems":1}},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["operations"]},"attribute":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"object"}},"required":["name","value"]}},"type":"object","properties":{"name":{"type":"string"},"apidoc":{"type":"object","properties":{"version":{"type":"string"}}},"info":{"type":"object","properties":{"contact":{"type":"object","properties":{"name":{"type":"string"},"url":{"type":"string"},"email":{"type":"string"}}},"license":{"type":"object","properties":{"name":{"type":"string"},"url":{"type":"string"},"required":["name"]}}}},"namespace":{"type":"string"},"base_url":{"type":"string"},"description":{"type":"string"},"imports":{"type":"array","items":{"type":"object","properties":{"uri":{"type":"string"}}}},"headers":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"type":{"type":"string"},"required":{"type":"string","enum":["true","false"],"default":"true"},"default":{"type":"string"},"description":{"type":"string"},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}},"deprecation":{"$ref":"#/definitions/deprecation"}},"required":["name","type","required"]}},"enums":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/enum"}}},"models":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/model"}}},"unions":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/union"}}},"resources":{"type":"object","patternProperties":{"[A-Za-z]":{"$ref":"#/definitions/resource"}}},"attributes":{"type":"array","items":{"$ref":"#/definitions/attribute"}}},"required":["name"]};
 
     var $output = document.getElementById('output');
 
@@ -150,6 +153,7 @@
           console.log("Valid!");
         }
       });
+
 
 </script>
 </body>
