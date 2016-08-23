@@ -295,6 +295,21 @@
       "required": [
         "operations"
       ]
+    },
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ]
     }
   },
   "type": "object",
@@ -429,6 +444,12 @@
         "[A-Za-z]": {
           "$ref": "#/definitions/resource"
         }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/attribute"
       }
     }
   },
