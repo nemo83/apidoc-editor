@@ -276,9 +276,9 @@
             },
             "required": [
               "method"
-            ]
-          },
-          "minItems": 1
+            ],
+            "minItems": 1
+          }
         },
         "deprecation": {
           "$ref": "#/definitions/deprecation"
