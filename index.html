@@ -141,15 +141,15 @@
         if(errors.length) {
           indicator.className = 'label alert';
           indicator.textContent = 'not valid';
+          console.log(errors);
         }
         // Valid
         else {
           indicator.className = 'label success';
           indicator.textContent = 'valid';
+          console.log("Valid!");
         }
       });
-
-
 
 </script>
 </body>
