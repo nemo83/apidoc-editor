@@ -190,7 +190,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "parameters": {
+            "properties": {
               "method": {
                 "type": "string",
                 "enum": [
@@ -208,7 +208,7 @@
               },
               "body": {
                 "type": "object",
-                "parameters": {
+                "properties": {
                   "type": {
                     "type": "string"
                   },
@@ -226,36 +226,39 @@
               "parameters": {
                 "type": "array",
                 "items": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string"
-                  },
-                  "location": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "deprecation": {
-                    "$ref": "#/definitions/deprecation"
-                  },
-                  "required": {
-                    "type": "boolean",
-                    "default": true
-                  },
-                  "default": {
-                    "type": "string"
-                  },
-                  "example": {
-                    "type": "string"
-                  },
-                  "minimum": {
-                    "type": "integer"
-                  },
-                  "maximum": {
-                    "type": "integer"
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "deprecation": {
+                      "$ref": "#/definitions/deprecation"
+                    },
+                    "required": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "default": {
+                      "type": "string"
+                    },
+                    "example": {
+                      "type": "string"
+                    },
+                    "minimum": {
+                      "type": "integer"
+                    },
+                    "maximum": {
+                      "type": "integer"
+                    }
                   }
                 },
                 "required": [
