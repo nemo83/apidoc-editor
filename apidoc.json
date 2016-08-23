@@ -63,10 +63,7 @@
           "minItems": 1,
           "uniqueItems": true
         }
-      },
-      "required": [
-        "description"
-      ]
+      }
     },
     "deprecation": {
       "type": "object",
