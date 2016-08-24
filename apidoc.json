@@ -203,7 +203,6 @@
         }
       },
       "required": [
-        "name",
         "types"
       ]
     },
