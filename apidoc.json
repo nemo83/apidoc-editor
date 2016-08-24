@@ -48,11 +48,20 @@
               "default": {
                 "type": "string"
               },
+              "example": {
+                "type": "string"
+              },
               "minimum": {
                 "type": "integer"
               },
               "maximum": {
                 "type": "integer"
+              },
+              "attributes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/attribute"
+                }
               },
               "deprecation": {
                 "$ref": "#/definitions/deprecation"
@@ -66,6 +75,15 @@
           },
           "minItems": 1,
           "uniqueItems": true
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "deprecation": {
+          "$ref": "#/definitions/deprecation"
         }
       }
     },
@@ -100,6 +118,12 @@
               "description": {
                 "type": "string"
               },
+              "attributes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/attribute"
+                }
+              },
               "deprecation": {
                 "$ref": "#/definitions/deprecation"
               }
@@ -110,6 +134,12 @@
           },
           "minItems": 1,
           "uniqueItems": true
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
         },
         "deprecation": {
           "$ref": "#/definitions/deprecation"
@@ -140,13 +170,21 @@
           "items": {
             "type": "object",
             "properties": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "deprecation": {
-              "$ref": "#/definitions/deprecation"
+              "type": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/attribute"
+                }
+              },
+              "deprecation": {
+                "$ref": "#/definitions/deprecation"
+              }
             },
             "required": [
               "type"
@@ -154,6 +192,15 @@
           },
           "minItems": 2,
           "uniqueItems": true
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "deprecation": {
+          "$ref": "#/definitions/deprecation"
         }
       },
       "required": [
@@ -215,6 +262,12 @@
                   },
                   "description": {
                     "type": "string"
+                  },
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/attribute"
+                    }
                   },
                   "deprecation": {
                     "$ref": "#/definitions/resourceItem"
@@ -280,6 +333,15 @@
                     "$ref": "#/definitions/response"
                   }
                 }
+              },
+              "attributes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/attribute"
+                }
+              },
+              "deprecation": {
+                "$ref": "#/definitions/deprecation"
               }
             },
             "required": [
@@ -288,12 +350,33 @@
             "minItems": 1
           }
         },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
         "deprecation": {
           "$ref": "#/definitions/deprecation"
         }
       },
       "required": [
         "operations"
+      ]
+    },
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "value"
       ]
     }
   },
@@ -388,6 +471,12 @@
           "description": {
             "type": "string"
           },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/attribute"
+            }
+          },
           "deprecation": {
             "$ref": "#/definitions/deprecation"
           }
@@ -429,6 +518,12 @@
         "[A-Za-z]": {
           "$ref": "#/definitions/resource"
         }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/attribute"
       }
     }
   },
