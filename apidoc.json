@@ -152,9 +152,6 @@
     "union": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
         "plural": {
           "type": "string"
         },
