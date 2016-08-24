@@ -146,7 +146,6 @@
         }
       },
       "required": [
-        "name",
         "values"
       ]
     },
