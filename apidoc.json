@@ -321,8 +321,7 @@
                 },
                 "required": [
                   "name",
-                  "type",
-                  "required"
+                  "type"
                 ],
                 "minItems": 1
               },
@@ -418,11 +417,11 @@
             },
             "url": {
               "type": "string"
-            },
-            "required": [
-              "name"
-            ]
-          }
+            }
+          },
+          "required": [
+            "name"
+          ]
         }
       }
     },
@@ -483,8 +482,7 @@
         },
         "required": [
           "name",
-          "type",
-          "required"
+          "type"
         ]
       }
     },
