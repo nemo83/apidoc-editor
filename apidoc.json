@@ -71,7 +71,8 @@
               "name",
               "type",
               "required"
-            ]
+            ],
+            "format": "grid"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -79,7 +80,8 @@
         "attributes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/attribute"
+            "$ref": "#/definitions/attribute",
+            "format": "grid"
           }
         },
         "deprecation": {
@@ -121,7 +123,8 @@
               "attributes": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/attribute"
+                  "$ref": "#/definitions/attribute",
+                  "format": "grid"
                 }
               },
               "deprecation": {
@@ -130,7 +133,8 @@
             },
             "required": [
               "name"
-            ]
+            ],
+            "format": "grid"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -138,7 +142,8 @@
         "attributes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/attribute"
+            "$ref": "#/definitions/attribute",
+            "format": "grid"
           }
         },
         "deprecation": {
@@ -175,7 +180,8 @@
               "attributes": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/attribute"
+                  "$ref": "#/definitions/attribute",
+                  "format": "grid"
                 }
               },
               "deprecation": {
@@ -184,7 +190,8 @@
             },
             "required": [
               "type"
-            ]
+            ],
+            "format": "grid"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -192,7 +199,8 @@
         "attributes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/attribute"
+            "$ref": "#/definitions/attribute",
+            "format": "grid"
           }
         },
         "deprecation": {
@@ -261,7 +269,8 @@
                   "attributes": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/definitions/attribute"
+                      "$ref": "#/definitions/attribute",
+                      "format": "grid"
                     }
                   },
                   "deprecation": {
@@ -312,7 +321,8 @@
                     "maximum": {
                       "type": "integer"
                     }
-                  }
+                  },
+                  "format": "grid"
                 },
                 "required": [
                   "name",
@@ -331,7 +341,8 @@
               "attributes": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/attribute"
+                  "$ref": "#/definitions/attribute",
+                  "format": "grid"
                 }
               },
               "deprecation": {
@@ -342,7 +353,8 @@
               "method"
             ],
             "minItems": 1
-          }
+          },
+          "format": "grid"
         },
         "attributes": {
           "type": "array",
@@ -478,7 +490,8 @@
         "required": [
           "name",
           "type"
-        ]
+        ],
+        "format": "grid"
       }
     },
     "enums": {
